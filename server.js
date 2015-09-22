@@ -18,16 +18,28 @@ instagram.use({
 
 //app.get('/handleauth', exports.handleauth);
 
+  var pathname=url.parse(req.url).pathname;
+  console.log(pathname);
 
 app.get('/', function(req, res) {
   var pathname=url.parse(req.url).pathname;
   console.log(pathname);
   switch(pathname){
-    case'/subpage':
+    case'/dashboard':
                   ig.user_media_recent( function(err, medias, pagination, remaining, limit) {
-                  res.render('public/pages/userpage.ejs', {gram: medias });
+                  res.render('public/pages/dashboard.ejs', {gram: medias });
                   });
                   break;
+  case'/search':
+          ig.user_media_recent( function(err, medias, pagination, remaining, limit) {
+      res.render('public/pages/profile.ejs', {gram: medias });
+      });
+    break;
+    case'/subpage':
+            ig.user_media_recent( function(err, medias, pagination, remaining, limit) {
+        res.render('public/pages/userpage.ejs', {gram: medias });
+        });
+      break;
     default:
             instagram.media_popular(function(err, medias, remaining, limit){
             res.render('public/pages/index.ejs', {gram: medias });
