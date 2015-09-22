@@ -1,9 +1,10 @@
 body{
   padding-top: px;
+  height:80%;
 }
 
 footer {
-  padding: 50px;
+  padding: 40px;
 }
 
 .instagram-pic {
@@ -96,17 +97,16 @@ body{
   background: #F0F0F0;
 }
 #grid {
-	overflow:auto;
-
+  position:static;
+  overflow:auto;
   background: linear-gradient(#e2e2e2,white);
   width:980px;
   height: 100%;
-  margin: auto;
+  margin:0;
   border-radius: 20px;
   border-top:20px;
   box-shadow: 3px 3px 5px rgba(100,100,100,0.5);
-  transform: translate(-50%, -50%);
-  top: 250px;
+  margin-left:auto;
+  margin-right:auto;
   left: 50%;
-  position:fixed;
 }
