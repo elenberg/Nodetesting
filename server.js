@@ -61,7 +61,7 @@ http.createServer(function (request, response) {
 
 });
 */
-/*app.listen(8080, function(err){
+app.listen(8080, function(err){
   if(err){
     console.log("Error");
   }
@@ -69,4 +69,4 @@ http.createServer(function (request, response) {
     console.log("Listening");
   }
 
-});*/
+});
