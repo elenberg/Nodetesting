@@ -31,7 +31,6 @@ app.get('/', function(req, res) {
     default:
             instagram.media_popular(function(err, medias, remaining, limit){
             res.render('public/pages/index.ejs', {gram: medias });
-    break;
   });
   }
 });
