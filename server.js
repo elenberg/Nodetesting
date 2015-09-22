@@ -56,7 +56,7 @@ http.createServer(function (request, response) {
             request.setEncoding("utf8");
             request.content = '';
             ig.user_media_recent( function(err, medias, pagination, remaining, limit) {
-            res.render('public/pages/userpage.ejs', {gram: medias });
+            response.render('public/pages/userpage.ejs', {gram: medias });
             });
 
                         //call account.whatever() to route to your account     functionality
@@ -66,7 +66,7 @@ http.createServer(function (request, response) {
             else if (uri == "/") //It's mysite.com
             {
                 instagram.media_popular(function(err, medias, remaining, limit){
-                  res.render('public/pages/index.ejs', {gram: medias });
+                  response.render('public/pages/index.ejs', {gram: medias });
               });
             }
 }).listen(8080, function(err){
