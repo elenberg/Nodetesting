@@ -14,16 +14,9 @@
            <a href="<%= gram.link %>" target= "_blank">
              <img src="<%= gram.images.standard_resolution.url %>" class= "img-responsive">
            </a>
+           <button class="pull--left"><%= gram.comments.count %> comments</button>
+        <button class="pull--right"><%= gram.likes.count %> likes</button>
 
-       <div class="instagram-bar">
-         <div class="likes">
-           <span class="like-icon"></span>
-         <%= gram.likes.count %>
-       </div>
-       <div class="comments">
-         <span class="comment-icon"></span>
-         <%= gram.comments.count %>
-       </div>
        </div>
      </div>
     <% }); %>
