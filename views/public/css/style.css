@@ -23,13 +23,10 @@ footer {
 
 .instagram-bar {
 
-  position: absolute;
-  bottom: 30px;
   width: 100%;
   left: 0;
   padding-left: 30px;
   padding-right: 30px;
-  color: #e2e2e2;
 }
 
 .instagram-bar span {
