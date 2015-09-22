@@ -21,16 +21,17 @@ instagram.use({
 
 app.get('/', function(req, res) {
   var pathname=url.parse(req.url).pathname;
+  console.log(pathname);
   switch(pathname){
     case'/subpage':
-    ig.user_media_recent( function(err, medias, pagination, remaining, limit) {
-      res.render('public/pages/userpage.ejs', {gram: medias });
-    });
-
-        break;
+                  ig.user_media_recent( function(err, medias, pagination, remaining, limit) {
+                  res.render('public/pages/userpage.ejs', {gram: medias });
+                  });
+                  break;
     default:
             instagram.media_popular(function(err, medias, remaining, limit){
             res.render('public/pages/index.ejs', {gram: medias });
+    break;
   });
   }
 });
