@@ -1,5 +1,5 @@
 body{
-  padding-top: 50px;
+  padding-top: px;
 }
 
 footer {
@@ -7,16 +7,17 @@ footer {
 }
 
 .instagram-pic {
-  position: relative;
-  padding: 10px;
-  overflow: hidden;
+	float:left;
 }
 
 .instagram-pic img {
-  width:32%;
-  padding: 5px;
-  border-radius: 2px;
-  box-shadow: 0 0 5px rbga(0,0,0,0.5);
+
+  margin: auto;
+  width:auto;
+  height:85%;
+  max-height: 290px;
+  padding: 0px 10px 10px 10px;
+  border-radius: 15px;
 }
 
 .instagram-bar {
@@ -88,21 +89,24 @@ div#header {
   margin 0;
   background: linear-gradient(black, grey);
   box-shadow: 2px 3px 5px rgba(100, 100, 100, 0.75);
-}
+  }
 body{
+
   margin: 0;
   background: #F0F0F0;
 }
 #grid {
+	overflow:auto;
+
   background: linear-gradient(#e2e2e2,white);
   width:980px;
-  height: 850px;
+  height: 100%;
   margin: auto;
   border-radius: 20px;
   border-top:20px;
   box-shadow: 3px 3px 5px rgba(100,100,100,0.5);
   transform: translate(-50%, -50%);
-  top:50%;
+  top: 250px;
   left: 50%;
   position:fixed;
 }
