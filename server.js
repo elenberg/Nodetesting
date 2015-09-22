@@ -1,7 +1,7 @@
 var express = require('express');
 var url = require('url');
 var app = express();
-var http = require('http').createServer(createServer);
+var http = require('http');
 var instagram = require('instagram-node').instagram();
 
 app.use(express.static(__dirname + '/public'));
