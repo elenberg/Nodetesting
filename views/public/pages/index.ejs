@@ -13,16 +13,15 @@
       <div class="instagram-pic col-sm-3">
            <a href="<%= gram.link %>" target= "_blank">
              <img src="<%= gram.images.standard_resolution.url %>" class= "img-responsive">
+             Likes Comments
            </a>
 
        <div class="instagram-bar">
          <div class="likes">
-         <span class="glyphicon glyphicon-heart"></span>
-         <%= gram.likes.count %>
+         Likes <%= gram.likes.count %>
        </div>
        <div class="comments">
-         <span class="glyphicon glyphicon-comment"></span>
-         <%= gram.comments.count %>
+         Comments <%= gram.comments.count %>
        </div>
        </div>
      </div>
