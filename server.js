@@ -1,6 +1,7 @@
 var express = require('express');
 var url = require('url');
 var app = express();
+var http = require('http').createServer(createServer);
 var instagram = require('instagram-node').instagram();
 
 app.use(express.static(__dirname + '/public'));
@@ -17,10 +18,6 @@ instagram.use({
 //app.get('/authorize_user', exports.authorize_user);
 
 //app.get('/handleauth', exports.handleauth);
-
-  var pathname=url.parse(req.url).pathname;
-  console.log(pathname);
-
 app.get('/', function(req, res) {
   var pathname=url.parse(req.url).pathname;
   console.log(pathname);
