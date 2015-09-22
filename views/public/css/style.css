@@ -93,3 +93,16 @@ body{
   margin: 0;
   background: #F0F0F0;
 }
+#grid {
+  background: linear-gradient(#e2e2e2,white);
+  width:980px;
+  height: 850px;
+  margin: auto;
+  border-radius: 20px;
+  border-top:20px;
+  box-shadow: 3px 3px 5px rgba(100,100,100,0.5);
+  transform: translate(-50%, -50%);
+  top:50%;
+  left: 50%;
+  position:fixed;
+}

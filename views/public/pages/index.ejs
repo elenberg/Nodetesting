@@ -11,8 +11,27 @@
 
   <main>
 <div class="container">
-  <a href="https://api.instagram.com/oauth/authorize/?client_id=f81f407862d44b03a130dfb1c020c5ff&redirect_uri=http://209.95.48.196:8080/subpage&response_type=code">Click here test</a>
-</div>
+  <div id="grid">
+         <% gram.forEach(function(gram){ %>
+      <div class="instagram-pic col-sm-3">
+           <a href="<%= gram.link %>" target= "_blank">
+             <img src="<%= gram.images.standard_resolution.url %>" class= "img-responsive">
+           </a>
+       </div>
+       <div class="instagram-bar">
+         <div class="likes">
+         <span class="glyphicon glyphicon-heart"></span>
+         <%= gram.likes.count %>
+       </div>
+       <div class="comments">
+         <span class="glyphicon glyphicon-comment"></span>
+         <%= gram.comments.count %>
+       </div>
+     </div>
+    <% }); %>
+
+     </div>
+  </div>
   </main>
 
   <footer>
