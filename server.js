@@ -1,6 +1,7 @@
 var express = require('express');
 var url = require('url');
 var app = express();
+var account = require('account');
 var http = require('http');
 var instagram = require('instagram-node').instagram();
 
@@ -18,6 +19,9 @@ instagram.use({
 //app.get('/authorize_user', exports.authorize_user);
 
 //app.get('/handleauth', exports.handleauth);
+
+
+/*
 app.get('/', function(req, res) {
   var pathname=url.parse(req.url).pathname;
   console.log(pathname);
@@ -43,8 +47,29 @@ app.get('/', function(req, res) {
   });
   }
 });
+*/
+http.createServer(function (request, response) {
+    // Parse the entire URI to get just the pathname
+    var uri = url.parse(request.url).pathname, query;
+        if (uri == "/account") //If it's mysite.com/account
+        {
+            request.setEncoding("utf8");
+            request.content = '';
+            ig.user_media_recent( function(err, medias, pagination, remaining, limit) {
+            res.render('public/pages/userpage.ejs', {gram: medias });
+            });
 
-app.listen(8080, function(err){
+                        //call account.whatever() to route to your account     functionality
+                        //send the response from it
+
+        }
+            else if (uri == "/") //It's mysite.com
+            {
+                instagram.media_popular(function(err, medias, remaining, limit){
+                  res.render('public/pages/index.ejs', {gram: medias });
+              });
+            }
+}).listen(8080, function(err){
   if(err){
     console.log("Error");
   }
@@ -53,3 +78,13 @@ app.listen(8080, function(err){
   }
 
 });
+
+/*app.listen(8080, function(err){
+  if(err){
+    console.log("Error");
+  }
+  else{
+    console.log("Listening");
+  }
+
+});*/
