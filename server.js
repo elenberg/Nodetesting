@@ -31,13 +31,16 @@ exports.handleauth = function(req, res) {
       res.send("Didn't work");
     } else {
       console.log('Yay! Access token is ' + result.access_token);
-      res.send('You made it!!');
+      instagram.use(access_token, result.access_token);
+      instagram.user_media_recent('user_id', function(err, medias, pagination, remaining, limit) {
+      res.render('public/pages/index.ejs', {gram: medias });
+      });
     }
   });
 };
 
 // This is where you would initially send users to authorize
-app.get('/authorize_user', exports.authorize_user);
+app.get('/', exports.authorize_user);
 // This is your redirect URI
 app.get('/handleauth', exports.handleauth);
 
