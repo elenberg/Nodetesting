@@ -21,13 +21,56 @@ instagram.use({
 //app.get('/handleauth', exports.handleauth);
 
 
-
 app.get('/', function(req, res) {
 
             instagram.media_popular(function(err, medias, remaining, limit){
             res.render('public/pages/index.ejs', {gram: medias });
   });
 
+});
+
+app.get('/login', function(req, res) {
+
+            instagram.media_popular(function(err, medias, remaining, limit){
+            res.render('public/pages/index.ejs', {gram: medias });
+  });
+
+});
+
+
+app.get('/dashboard', function(req, res) {
+
+            instagram.media_popular(function(err, medias, remaining, limit){
+            res.render('public/pages/index.ejs', {gram: medias });
+  });
+
+});
+
+
+app.get('/search', function(req, res) {
+
+            instagram.media_popular(function(err, medias, remaining, limit){
+            res.render('public/pages/index.ejs', {gram: medias });
+  });
+
+});
+
+
+app.get('/search', function(req, res) {
+
+            instagram.media_popular(function(err, medias, remaining, limit){
+            res.render('public/pages/index.ejs', {gram: medias });
+  });
+
+});
+
+app.get('/?*', function(req, res) {
+
+           var pathname = url.parse(req.url).query;
+           console.log(pathname);
+           instagram.media_popular(function(err, medias, remaining, limit){
+           res.render('public/pages/index.ejs', {gram: medias });
+           });
 });
 /*
 http.createServer(function (request, response) {
