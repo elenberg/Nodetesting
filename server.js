@@ -30,10 +30,10 @@ exports.handleauth = function(req, res) {
       console.log(err.body);
       res.send("Didn't work");
     } else {
-      console.log('Yay! Access token is ' + result.access_token + ' And more information' + result.user_id);
+      console.log('Yay! Access token is ' + result.access_token + ' And more information' + result.user.id);
       instagram.use({access_token: result.access_token});
-      console.log('Yay lets use ' + result.user_id);
-      instagram.user_media_recent(result.user_id, function(err, medias, pagination, remaining, limit) {
+      console.log('Yay lets use ' + result.user.id);
+      instagram.user_media_recent(result.user.id, function(err, medias, pagination, remaining, limit) {
       res.render('public/pages/index.ejs', {gram: medias });
       });
     }
