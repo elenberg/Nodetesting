@@ -32,7 +32,7 @@ exports.handleauth = function(req, res) {
     } else {
       console.log('Yay! Access token is ' + result.access_token);
       instagram.use({access_token: result.access_token});
-      instagram.user_media_recent('user_id', function(err, medias, pagination, remaining, limit) {
+      instagram.user_media_recent(instagram.user_id, function(err, medias, pagination, remaining, limit) {
       res.render('public/pages/index.ejs', {gram: medias });
       });
     }
