@@ -23,11 +23,20 @@ app.use(session({
 }));
 */
 
+
 app.use(cookieParser());
+
 app.use(session({
-  secret: 'You know I don\'t like chocolate right?',
-  cookie:{}
-}))
+  cookieName: 'session',
+  secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+  httpOnly: true,
+  secure: true,
+  ephemeral: true,
+  resave: false,
+  saveUninitialized: true
+}));
 instagram.use({
 
   client_id: 'f81f407862d44b03a130dfb1c020c5ff',
@@ -50,21 +59,20 @@ exports.handleauth = function(req, res) {
     } else {
       console.log('Yay! Access token is ' + result.access_token + ' And more information' + result.user.id);
       instagram.use({access_token: result.access_token});
-      session.loggedIn = true;
-      session['user_id'] = result.user.id;
-      session['username'] = result.user.username;
-      session['full_name'] = result.user.full_name;
-      session['profile_picture'] = result.user.profile_picture;
-      res.cookie('test', 'yes', { expires: new Date(Date.now() + 365*2*24*60*60*1000), httpOnly: true });
-      console.log('Yay lets use ' + result.user.id);
+      req.session.instaToken = result.access_token;
+      req.session.user_id = result.user.id;
+      req.session.username = result.user.username;
+      req.session.full_name = result.user.full_name;
+      req.session.profile_picture = result.user.profile_picture;
+      console.log('Yay lets use ' + req.session.user_id);
       res.redirect(homepage_uri);
     }
   });
 };
 
 app.get('/', function(req, res) {
-  if(req.session.loggedIn == true){
-    console.log('Undefined isn\'t it?' + req.session.loggedIn + ' ');
+  if(req.session.instaToken === undefined){
+    console.log('Undefined isn\'t it?' + req.session.instaToken + ' ');
     res.redirect(homepage_uri);
   }
   else{
@@ -76,15 +84,15 @@ app.get('/handleauth', exports.handleauth);
 
 app.get('/dashboard', function(req, res){
 
-  console.log('Session is?' + req.session.loggedIn + ' \n');
-  if(req.session.loggedIn === true){//This always returns false. Trying to figure out why it isn't grabbing the session.
+  console.log('access_token is ' + req.session.instaToken + ' \n');
+  if(req.session.instaToken){//This always returns false. Trying to figure out why it isn't grabbing the session.
 
-  instagram.user_media_recent(session.user_id, function(err, medias, pagination, remaining, limit) {
+  instagram.user_media_recent(req.session.user_id, function(err, medias, pagination, remaining, limit) {
   res.render('public/pages/index.ejs', {gram: medias });
   });
   }
   else{
-    console.log('In else statement of dashboard\n' + req.cookies.name + ' Including cookies. Testing.');
+    //console.log('In else statement of dashboard\n' + req.cookies.name + ' Including cookies. Testing.');
     //For some reason it isn't grabbing the instagram.use from line 27. Not sure why.
     instagram.use({
 
@@ -109,4 +117,3 @@ app.listen(8080, function(err){
   }
 
 });
-
