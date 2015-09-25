@@ -48,6 +48,12 @@ var redirect_uri = 'http://209.95.48.196:8080/handleauth';
 var homepage_uri = 'http://209.95.48.196:8080/dashboard';
 
 exports.authorize_user = function(req, res) {
+  instagram.use({
+
+    client_id: 'f81f407862d44b03a130dfb1c020c5ff',
+    client_secret: 'd337b5c6f52f4b3a8270d83c2d88ef18'
+
+  });
   res.redirect(instagram.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
 };
 
